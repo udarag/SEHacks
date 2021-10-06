@@ -1,0 +1,72 @@
+#ui, #signin-button, #signout-button {
+  display: none;
+}
+
+button {
+  height: 30px;
+  outline: none;
+  margin: 25px;
+  border: none;
+  border-radius: 8px;
+  box-shadow: 2px 2px 4px rgba(0, 0, 0, .25);
+  cursor: pointer;
+  width: 100px;
+}
+
+blockquote {
+  background-color: rgba(128, 128, 128, .125);
+  border-left: 4px solid rgba(128, 128, 128, .25);
+  font-style: italic;
+  margin: 4% 0;
+  padding: 4% 0 4% 2%;
+  width: 98%;
+}
+
+h2 {
+  text-align: center;
+}
+
+section {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 1rem;
+}
+
+
+button.current {
+  box-shadow: 0 0 0 2px white,
+              0 0 0 4px black;
+}
+
+select {
+  box-shadow: 2px 2px 4px rgba(0, 0, 0, .25);
+  width: 100%;
+}
+
+.progress-background {
+  background-color: rgba(128, 128, 128, .125);
+  width: 100%;
+}
+
+.progress-fill {
+  border-top: 1px dotted rgba(128, 128, 128, .25);
+  display: block;
+  height: 1px;
+  transition: background-color 250ms ease-in-out, width 50ms ease-in-out;
+}
+
+.downloading {
+  background-color: rgba(0, 160, 0, .75);
+}
+
+.finished {
+  background-color: rgba(0, 96, 0, .25);
+}
+
+.warning {
+  background-color: rgba(240, 224, 0, .5);
+}
+
+.error {
+  background-color: rgba(240, 0, 0, .5);
+}

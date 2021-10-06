@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>Multi Threaded Downloader</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+  <body>
+    <main>
+      <h2>B2 Downloader</h2>
+      <section>
+        <label for="filepath">B2 URL</label>
+        <input type="text" id="filepath" name="filepath">
+      </section>
+      <section>
+        <label for="threads">Threads</label>
+        <input type="number" id="threads" name="threads" value="6">
+      </section>
+      <section>
+        <label for="chunkSize">Chunk size</label>
+        <input type="number" id="chunkSize" name="chunkSize" value="4">
+      </section>
+      <section>
+        <label for="retries">Retries</label>
+        <input type="number" id="retries" name="retries" value="2">
+      </section>
+      <!-- <section>
+        <select id="fileList" name="fileList">
+          <option>Select a file.</option>
+          <option data-cluster-num="000" data-bucket-name="nilayp" value="1GB.txt">nilayp/1GB.txt</option>
+          <option data-cluster-num="000" data-bucket-name="nilayp" value="5GB.txt">nilayp/5GB.txt</option>
+          <option data-cluster-num="000" data-bucket-name="nilayp" value="10GB.txt">nilayp/10GB.txt</option>
+          <option data-cluster-num="000" data-bucket-name="nilayp" value="50GB.txt">nilayp/50GB.txt</option>
+          <option data-cluster-num="002" data-bucket-name="FooBaz" value="hugeImage.jpg">FooBaz/hugeImage.jpg 17MB</option>
+          <option data-cluster-num="002" data-bucket-name="FooBaz" value="dummy.dat">FooBaz/dummy.dat 71MB</option>
+          <option data-cluster-num="002" data-bucket-name="FooBaz" value="404.html">404 test</option>
+        </select>
+      </section> -->
+      <button type="button" id="downloadButton">Download</button>
+      <div id="notificationArea" class="normal"></div>
+      <div id="progressArea"></div>
+    </main>
+
+    <script src="../bower_components/bro-fs/bro-fs.min.js"></script>
+    <script src="Chunk.js"></script>
+    <script src="PromiseQueue.js"></script>
+    <script src="MultiThread.js"></script>
+    <script defer src="backblaze.js"></script>
+  </body>
+
+</html>
