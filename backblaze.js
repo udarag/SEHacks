@@ -34,20 +34,22 @@
 
     // Change "Download" button text & function to "Cancel"
     downloadButton.innerText = 'Cancel'
+    document.getElementById("downloadButton").style.background='#d02e31';
     downloadButton.onclick = () => {
       multiThread.cancel()
       // Switch back to download again
-      downloadButton.innerText = 'Download'
+      downloadButton.innerText = 'Retry'
+      document.getElementById("downloadButton").style.background='#d0ba3e'
       downloadButton.onclick = startDownload
     }
 
+    let completedChunks = 0
     let totalChunks = 0
     let progressElements = []
     const notification = document.createElement('blockquote')
 
     // These are the main "thread" handlers
     options.onStart = ({contentLength, chunks}) => {
-      console.log(chunks)
       notificationArea.appendChild(notification)
       totalChunks = chunks
     }
@@ -55,6 +57,7 @@
     options.onFinish = () => {
       notification.innerText += '\nFinished successfully!'
       downloadButton.innerText = 'Download'
+      document.getElementById("downloadButton").style.background='#1e9b2d'
       downloadButton.onclick = startDownload
     }
 
@@ -63,7 +66,6 @@
     }
 
     options.onProgress = ({contentLength, loaded}) => {
-      console.log(contentLength)
       const bytesToMb = bytes => {
         return bytes / 1024 / 1024
       }
@@ -73,8 +75,7 @@
 
       loaded = bytesToMb(loaded).toFixed(1)
       contentLength = bytesToMb(contentLength).toFixed(1)
-      notification.innerText = `Downloading ${totalChunks} chunks
-                                ${loaded}/${contentLength} MB, ${percent}%`
+      notification.innerText = `${percent}% of File Downloaded ${completedChunks}/${totalChunks-1} Chunks Completed ${loaded}/${contentLength} MB`
     }
 
     // These are the individual chunk handlers
@@ -99,6 +100,7 @@
     }
 
     options.onChunkFinish = ({id}) => {
+      completedChunks += 1
       progressElements[id].fill.classList.remove('error')
       progressElements[id].fill.classList.remove('warning')
       progressElements[id].fill.classList.remove('downloading')
