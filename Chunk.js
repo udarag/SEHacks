@@ -19,7 +19,7 @@ class Chunk {
     this.onStart({id: this.id})
 
     return window.fetch(this.url, {
-      mode: 'no-cors',
+      mode: 'cors',
       method: 'GET',
       headers: this.headers,
       signal: this.controller.signal

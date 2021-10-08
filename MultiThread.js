@@ -20,7 +20,7 @@ class MultiThread {
 
     window.fetch(this.url, {
       method: 'HEAD',
-      mode: 'no-cors',
+      mode: 'cors',
       headers: this.headers,
       signal: this.controller.signal
     })
